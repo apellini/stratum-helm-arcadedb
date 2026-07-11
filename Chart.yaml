@@ -1,0 +1,18 @@
+apiVersion: v2
+name: arcadedb
+description: ArcadeDB graph database — STRATUM Specter digital twin store
+type: application
+version: 0.1.0
+appVersion: "26.7.2"
+home: https://arcadedb.com
+sources:
+  - https://github.com/ArcadeData/arcadedb
+  - https://github.com/apellini/stratum-helm-arcadedb
+maintainers:
+  - name: apellini
+    url: https://github.com/apellini
+keywords:
+  - arcadedb
+  - graph
+  - database
+  - stratum

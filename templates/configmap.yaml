@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "arcadedb.fullname" . }}-config
+  labels:
+    {{- include "arcadedb.labels" . | nindent 4 }}
+data:
+  arcadedb-server.json: |
+    {
+      "server.bindAddress": {{ .Values.serverConfig.server.bindAddress | quote }},
+      "server.httpPort": {{ .Values.serverConfig.server.httpPort }},
+      "server.binaryPort": {{ .Values.serverConfig.server.binaryPort }}
+    }

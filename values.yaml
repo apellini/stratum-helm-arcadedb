@@ -1,0 +1,43 @@
+# Default values for arcadedb.
+# Specter LLD: single node for dev; set replicaCount: 3 for prod Raft cluster.
+
+replicaCount: 1
+
+image:
+  repository: arcadedata/arcadedb
+  # tag defaults to Chart.AppVersion when empty
+  tag: ""
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  httpPort: 2480    # REST/HTTP API
+  binaryPort: 2424  # binary protocol
+
+persistence:
+  size: 50Gi
+  storageClass: ""  # uses cluster default (local-path on k3s dev)
+  accessMode: ReadWriteOnce
+
+# JVM heap settings for the ArcadeDB server process
+javaOpts: "-Xms1g -Xmx3g"
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: 1Gi
+  limits:
+    memory: 4Gi
+
+# ArcadeDB server configuration (written to arcadedb-server.json via ConfigMap)
+serverConfig:
+  # Bind on all interfaces inside the pod
+  server.bindAddress: "0.0.0.0"
+  server.httpPort: 2480
+  server.binaryPort: 2424
+
+podAnnotations: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

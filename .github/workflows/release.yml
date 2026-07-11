@@ -1,0 +1,51 @@
+name: Release Helm Chart
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.15.0
+
+      - name: Package chart
+        run: helm package . --destination .dist/
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update chart index
+        run: |
+          cp .dist/*.tgz gh-pages/
+          helm repo index gh-pages/ --url https://apellini.github.io/stratum-helm-arcadedb --merge gh-pages/index.yaml
+
+      - name: Publish to gh-pages
+        run: |
+          cd gh-pages
+          git add .
+          git commit -m "release: publish chart $(ls ../.dist/*.tgz | xargs basename)"
+          git push
