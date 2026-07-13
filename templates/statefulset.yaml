@@ -37,9 +37,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: JAVA_OPTS
-              value: {{ .Values.javaOpts | quote }}
-            - name: arcadedb_server_rootPassword
-              value: {{ .Values.auth.rootPassword | quote }}
+              value: {{ printf "%s -Darcadedb.server.rootPassword=%s" .Values.javaOpts .Values.auth.rootPassword | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.service.httpPort }}
