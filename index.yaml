@@ -3,7 +3,29 @@ entries:
   arcadedb:
   - apiVersion: v2
     appVersion: 26.7.2
-    created: "2026-07-11T17:43:38.389156622Z"
+    created: "2026-07-13T18:40:29.698472853Z"
+    description: ArcadeDB graph database — STRATUM Specter digital twin store
+    digest: 7b06252879f3f798d67ed64045017e413d279dae0fc07f36de45b7403ed845e1
+    home: https://arcadedb.com
+    keywords:
+    - arcadedb
+    - graph
+    - database
+    - stratum
+    maintainers:
+    - name: apellini
+      url: https://github.com/apellini
+    name: arcadedb
+    sources:
+    - https://github.com/ArcadeData/arcadedb
+    - https://github.com/apellini/stratum-helm-arcadedb
+    type: application
+    urls:
+    - https://apellini.github.io/stratum-helm-arcadedb/arcadedb-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 26.7.2
+    created: "2026-07-13T18:40:29.697245315Z"
     description: ArcadeDB graph database — STRATUM Specter digital twin store
     digest: cdc562ba665f89857cdb483dc10b6c36e4dd3b09620576f56995a75b2fd958b1
     home: https://arcadedb.com
@@ -23,4 +45,4 @@ entries:
     urls:
     - https://apellini.github.io/stratum-helm-arcadedb/arcadedb-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-11T17:43:38.387847821Z"
+generated: "2026-07-13T18:40:29.696083115Z"
