@@ -31,10 +31,11 @@ resources:
 
 # ArcadeDB server configuration (written to arcadedb-server.json via ConfigMap)
 serverConfig:
-  # Bind on all interfaces inside the pod
-  server.bindAddress: "0.0.0.0"
-  server.httpPort: 2480
-  server.binaryPort: 2424
+  server:
+    # Bind on all interfaces inside the pod
+    bindAddress: "0.0.0.0"
+    httpPort: 2480
+    binaryPort: 2424
 
 podAnnotations: {}
 
