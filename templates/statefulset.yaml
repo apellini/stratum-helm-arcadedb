@@ -38,6 +38,8 @@ spec:
           env:
             - name: JAVA_OPTS
               value: {{ .Values.javaOpts | quote }}
+            - name: arcadedb_server_rootPassword
+              value: {{ .Values.auth.rootPassword | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.service.httpPort }}

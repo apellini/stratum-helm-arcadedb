@@ -19,6 +19,13 @@ persistence:
   storageClass: ""  # uses cluster default (local-path on k3s dev)
   accessMode: ReadWriteOnce
 
+auth:
+  # Root password for the ArcadeDB server. Must be non-empty — ArcadeDB's
+  # first-boot interactive password setup loops forever when stdin is closed
+  # (non-interactive container). Set arcadedb_server_rootPassword env var to
+  # bypass the prompt. Override with a Secret reference in production.
+  rootPassword: "arcadedb"
+
 # JVM heap settings for the ArcadeDB server process
 javaOpts: "-Xms1g -Xmx3g"
 
