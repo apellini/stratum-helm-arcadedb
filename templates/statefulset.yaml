@@ -64,8 +64,8 @@ spec:
             - name: data
               mountPath: /home/arcadedb/databases
             - name: config
-              mountPath: /home/arcadedb/config
-              readOnly: true
+              mountPath: /home/arcadedb/config/arcadedb-server.json
+              subPath: arcadedb-server.json
       volumes:
         - name: config
           configMap:
